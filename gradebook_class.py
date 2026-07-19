@@ -1,3 +1,6 @@
+from student_class import Student
+from course_class import Course
+
 class Gradebook:
     def __init__(self):
         self.students = {}
@@ -5,14 +8,32 @@ class Gradebook:
         self.grades = {}
         self.passing_grade = 55
 
-    def add_student(self, student):
+    def add_student(self):
         """Adds a new Student object to the students dictionary in the gradebook, using the student's ID as the key"""
+        student_id = input("Student ID: ")
+        name = input("Name: ")
+        email = input("Email: ")
+        self.students[student_id] = Student(student_id, name, email)
 
-    def add_course(self, course):
+
+    def add_course(self):
         """Adds a new Course object to the courses dictionary using its course_code"""
+        course_code = input("Course Code: ")
+        course_name = input("Course Name: ")
+        self.courses[course_code] = Course(course_code, course_name)
 
-    def enroll_student(self, student_id, course_code):
+
+    def enroll_student(self):
         """Connects a student to a course after verifying that both the student and course exist"""
+        student_id = input("Student ID: ")
+        course_code = input("Course Code: ")
+        if student_id in self.students and course_code in self.courses:
+
+            self.students[student_id].enroll_cource(course_code)
+            self.courses[course_code].add_student(course_code)
+
+            print(f"Now student {student_id} is connected to course {course_code}.")
+
 
     def add_assessment(self, course_code, assessment):
         """Adds an assessment, such as a quiz, exam, or project, to a specific course"""
