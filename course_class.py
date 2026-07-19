@@ -15,10 +15,7 @@ class Course:
 
     def find_assessment(self, title):
         """Searches for an assessment by title"""
-        if title.lower() or title.title() in self.assessments:
-            print(f"The {title} was found.")
-        else:
-            print(f"{title} not found.")
+        return title.lower() or title.title() in self.assessments
 
     def display_info(self):
         """Shows course details, such as course code, course name, number of students, and assessments"""
