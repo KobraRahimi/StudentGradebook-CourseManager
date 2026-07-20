@@ -1,13 +1,18 @@
 class Course:
+    course_list = []
     def __init__(self, course_code, course_name):
         self.course_code =course_code
         self.course_name = course_name
         self.students = []
         self.assessments = []
+        Course.course_list.append(course_name)
 
     def add_student(self, student_id):
         """Enrolls a student in this course by adding the student’s ID to the course’s students list"""
-        self.students.append(student_id)
+        if not student_id.upper() in self.students:
+            self.students.append(student_id)
+        else:
+            print("The student ID is on the list!")
 
     def add_assessment(self, assessment):
         """Adds a quiz, exam, or project to the course"""
@@ -24,4 +29,3 @@ class Course:
         print(f"Enrolled Students: {len(self.students)}")
         print("Assessments: ")
         # print(f"- Quiz 1 / Max Score: 10 \n- Midterm Exam / Max Score: 100 \n- Final Project / Max Score: 100")
-
