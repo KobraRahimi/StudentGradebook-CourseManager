@@ -22,7 +22,10 @@ class Student:
 
     def enroll_course(self, course_code):
         """Adds a course code to the student’s courses list."""
-        self.courses.append(course_code)
+        if not course_code.upper() in self.courses:
+            self.courses.append(course_code)
+        else:
+            print("The course code is included in the list!")
 
     def display_info(self):
         """Shows the student’s basic information, such as ID, name, email, and enrolled courses"""
