@@ -2,7 +2,7 @@ class Student:
     def __init__(self, student_id, name, email):
         self.student_id = student_id
         self.name = name
-        self.email = email
+        self.__email = email
         self.courses = []
 
     def get_id(self):
@@ -13,10 +13,16 @@ class Student:
         """Returns the student's name"""
         return self.name
 
-    def set_email(self, email):
+    @property
+    def email(self):
+        """Returns the student's email address"""
+        return self.__email
+
+    @email.setter
+    def email(self, set_email):
         """Updates the student’s email address. It can check that the email is valid before changing it"""
-        if email.endswith("@gmail.com"):
-            self.email = email
+        if set_email.endswith("@gmail.com"):
+            self.__email = set_email
         else:
             print("Invalid email")
 
@@ -31,5 +37,5 @@ class Student:
         """Shows the student’s basic information, such as ID, name, email, and enrolled courses"""
         print(f"Student ID: {self.student_id}")
         print(f"Name: {self.name}")
-        print(f"Email: {self.email}")
+        print(f"Email: {self.__email}")
         print(f"Courses: {self.courses}")
