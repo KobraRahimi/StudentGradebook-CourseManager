@@ -56,9 +56,8 @@ while should_continue:
 
     elif choice == 6:
         print("== Add Assignment ==")
-        course_code = input("enter course code: ")
-        assessment = input("enter type assessment: ")
-        gradebook.add_assessment(course_code, assessment)
+        assessment_type = input("Enter the assessment type (quiz/exam/project): ").title()
+        max_score = int(input("Enter the maximum score (int): "))
 
     elif choice == 7:
         print("== Record Grade ==")
@@ -66,7 +65,7 @@ while should_continue:
 
     elif choice == 8:
         print("== View Student Report ==")
-        student_id = input("enter student id: ")
+        student_id = input("Enter student id: ").upper()
         gradebook.show_report(student_id)
 
     else:
@@ -74,4 +73,3 @@ while should_continue:
 
     if choice != 0:
         print("\n" * 5)
-
